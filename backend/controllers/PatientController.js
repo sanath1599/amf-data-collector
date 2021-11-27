@@ -110,7 +110,7 @@ exports.patientStore = [
 	(req, res) => {
 		try {
 			const errors = validationResult(req);
-			var patient = new Patient(...req.body);
+			var patient = new Patient({ ...req.body, id: between(111111,999999) });
 
 			if (!errors.isEmpty()) {
 				return apiResponse.validationErrorWithData(res, "Validation Error.", errors.array());
