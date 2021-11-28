@@ -25,9 +25,9 @@ import {
   MEDICAL_CONDITIONS,
   CHOICE_OF_SPORT,
   SCRATCH_TEST_LEVELS,
-} from "../../containers/Screening/constants";
+} from "../../containers/Patient/constants";
 
-import { CANDIDATE_DETAILS_SCHEMA } from "../../schema/candidate";
+import { CANDIDATE_DETAILS_SCHEMA } from "../../schema/screeningSchema";
 
 export default function CandidateDetailsForm(operation, candidateDetails) {
   const formik = useFormik({

@@ -9,11 +9,11 @@ import {
   createTheme,
   ThemeProvider,
 } from "@mui/material/";
-import CandidateDetailsForm from "../../components/ScreeningComponents/CandidateDetailsForm";
+import CandidateDetailsForm from "../../components/PatientComponents/CandidateDetailsForm";
 
 const theme = createTheme();
 
-export default function Screening(operation) {
+export default function Patient(operation) {
   console.log("operation = ", operation.operation);
   return (
     <ThemeProvider theme={theme}>

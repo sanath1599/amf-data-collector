@@ -1,8 +1,38 @@
 import "./App.css";
-import Screening from "./containers/Screening";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Suspense } from "react";
+import PublicRoute from "./routes/publicRoute";
+import PrivateRoute from "./routes/privateRoute";
+
+import authService from "./services/auth.service";
+import { CircularProgress } from "@mui/material";
+import Login from "./components/IdentityComponents/login";
+import Register from "./components/IdentityComponents/register";
+import Home from "./containers/Home";
+import Patient from "./containers/Patient";
 
 function App() {
-  return <Screening operation="CREATE" />;
+  const user = authService.getCurrentUser();
+  return (
+    <Router>
+      <Suspense fallback={<CircularProgress />}>
+        <Routes>
+          <Route exact path="/login" element={<PublicRoute user={user} />}>
+            <Route exact path="/login" element={<Login />} />
+          </Route>
+          <Route exact path="/register" element={<PublicRoute user={user} />}>
+            <Route exact path="/register" element={<Register />} />
+          </Route>
+          <Route exact path="/" element={<PrivateRoute />}>
+            <Route exact path="/" element={<Home />} />
+          </Route>
+          <Route exact path="/patient" element={<PrivateRoute />}>
+            <Route exact path="/patient" element={<Patient />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </Router>
+  );
 }
 
 export default App;
