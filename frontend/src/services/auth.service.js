@@ -5,7 +5,7 @@ const API_URL = "http://localhost:8080/api/auth/";
 class AuthService {
   login(username, password) {
     return axios
-      .post(API_URL + "signin", {
+      .post(API_URL + "login", {
         username,
         password,
       })
@@ -22,9 +22,10 @@ class AuthService {
     localStorage.removeItem("user");
   }
 
-  register(username, email, password) {
-    return axios.post(API_URL + "signup", {
-      username,
+  register(firstName, lastName, email, password) {
+    return axios.post(API_URL + "register", {
+      firstName,
+      lastName,
       email,
       password,
     });
