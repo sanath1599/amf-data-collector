@@ -118,7 +118,6 @@ exports.patientDetail = [
  * @returns {Object}
  */
 exports.patientStore = [
-  auth,
   body("name", "Name must not be empty.").isLength({ min: 1 }).trim(),
   sanitizeBody("*").escape(),
   (req, res) => {

@@ -26,6 +26,7 @@ import {
   CHOICE_OF_SPORT,
   SCRATCH_TEST_LEVELS,
 } from "../../containers/Patient/constants";
+import PatientService from "../../services/patient.service"
 
 import { CANDIDATE_DETAILS_SCHEMA } from "../../schema/screeningSchema";
 
@@ -36,6 +37,12 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
     validateOnChange: false,
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
+      PatientService.createPatient(values).then((response) => {
+        alert("Data Stored Succesfully!")
+      },
+      (error) => {
+        alert("Error occured",JSON.stringify(error))
+      })
     },
   });
 

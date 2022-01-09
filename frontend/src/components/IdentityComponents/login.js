@@ -36,7 +36,7 @@ export default function Login() {
     onSubmit: (values) => {
       // console.log(JSON.stringify(values, null, 2));
       AuthService.login(values.email, values.password).then(
-        () => {
+        (response) => {
           // navigate("/home");
           <Navigate to="/home" />;
           window.location.reload();
