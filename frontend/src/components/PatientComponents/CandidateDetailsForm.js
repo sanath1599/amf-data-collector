@@ -1,4 +1,4 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useEffect, useState } from "react";
 import {
   Grid,
   TextField,
@@ -15,6 +15,7 @@ import {
 } from "@mui/material/";
 import MuiPhoneNumber from "material-ui-phone-number";
 import { useFormik } from "formik";
+import { CandidateSearch } from "./CandidateSearch";
 
 import {
   GRADES,
@@ -26,26 +27,73 @@ import {
   CHOICE_OF_SPORT,
   SCRATCH_TEST_LEVELS,
 } from "../../containers/Patient/constants";
-import PatientService from "../../services/patient.service"
+import PatientService from "../../services/patient.service";
 
 import { CANDIDATE_DETAILS_SCHEMA } from "../../schema/screeningSchema";
 
-export default function CandidateDetailsForm(operation, candidateDetails) {
+export default function CandidateDetailsForm({ operation, candidateDetails }) {
   const formik = useFormik({
     initialValues: CANDIDATE_DETAILS_SCHEMA,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
-      PatientService.createPatient(values).then((response) => {
-        alert("Data Stored Succesfully!")
-      },
-      (error) => {
-        alert("Error occured",JSON.stringify(error))
-      })
+      PatientService.createPatient(values).then(
+        (response) => {
+          alert("Data Stored Succesfully!");
+        },
+        (error) => {
+          alert("Error occured", JSON.stringify(error));
+        }
+      );
     },
   });
 
+  const [typesOfDisabilitiesState, setTypesOfDisabilitesState] = useState(
+    TYPES_OF_DISABILITIES.reduce(
+      (object, key) => ({ ...object, [key.toLowerCase()]: false }),
+      {}
+    )
+  );
+
+  const [eligibilityCriteriaState, setEligibilityCriteriaState] = useState(
+    ELIGIBILITY_CRITERIA.reduce(
+      (object, key) => ({ ...object, [key.toLowerCase()]: false }),
+      {}
+    )
+  );
+
+  const [choiceOfSportState, setChoiceOfSportState] = useState(
+    CHOICE_OF_SPORT.reduce(
+      (object, key) => ({ ...object, [key.toLowerCase()]: false }),
+      {}
+    )
+  );
+
+  useEffect(() => {
+    if (candidateDetails && candidateDetails.typesOfDisabilities) {
+      candidateDetails.typesOfDisabilities.forEach((type) => {
+        setTypesOfDisabilitesState({
+          ...typesOfDisabilitiesState,
+          [type.toLowerCase()]: true,
+        });
+      });
+
+      candidateDetails.eligibilityCriteria.forEach((type) => {
+        setEligibilityCriteriaState({
+          ...eligibilityCriteriaState,
+          [type.toLowerCase()]: true,
+        });
+      });
+
+      candidateDetails.choiceOfSport.forEach((type) => {
+        setChoiceOfSportState({
+          ...choiceOfSportState,
+          [type.toLowerCase()]: true,
+        });
+      });
+    }
+  }, [candidateDetails]);
   return (
     <Fragment>
       <form onSubmit={formik.handleSubmit}>
@@ -57,7 +105,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               label="Student's name"
               fullWidth
               variant="standard"
-              value={formik.values.name}
+              value={candidateDetails.name || formik.values.name}
               onChange={formik.handleChange}
               error={formik.touched.name && Boolean(formik.errors.name)}
             />
@@ -70,7 +118,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               required
               label="Grade"
-              value={formik.values.grade}
+              value={candidateDetails.grade || formik.values.grade}
               onChange={formik.handleChange}
               error={formik.touched.grade && Boolean(formik.errors.grade)}
             >
@@ -89,7 +137,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               required
               fullWidth
               label="Age"
-              value={formik.values.age}
+              value={candidateDetails.age || formik.values.age}
               onChange={formik.handleChange}
               error={formik.touched.age && Boolean(formik.errors.age)}
             />
@@ -104,6 +152,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                     <Radio
                       name="gender"
                       required={true}
+                      checked={gender.toLowerCase() === candidateDetails.gender}
                       value={gender.toLowerCase()}
                       onChange={formik.handleChange}
                       error={
@@ -127,7 +176,9 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               disableCountryCode
               autoFormat={false}
               fullWidth
-              value={formik.values.contactNumber}
+              value={
+                candidateDetails.contactNumber || formik.values.contactNumber
+              }
               onChange={(e) => formik.setFieldValue("contactNumber", e)}
             />
           </Grid>
@@ -139,7 +190,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               label="NVS branch"
               required
-              value={formik.values.nvsBranch}
+              value={candidateDetails.nvsBranch || formik.values.nvsBranch}
               onChange={formik.handleChange}
               error={
                 formik.touched.nvsBranch && Boolean(formik.errors.nvsBranch)
@@ -162,6 +213,11 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                     control={
                       <Checkbox
                         name="typeOfDisability"
+                        checked={
+                          typesOfDisabilitiesState[
+                            typeOfDisability.toLowerCase()
+                          ]
+                        }
                         value={typeOfDisability.toLowerCase()}
                         onChange={(e) => {
                           if (e.target.checked)
@@ -194,7 +250,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               type="number"
               fullWidth
               label="Disability Percentage"
-              value={formik.values.disabilityPercentage}
+              value={
+                candidateDetails.disabilityPercentage ||
+                formik.values.disabilityPercentage
+              }
               onChange={formik.handleChange}
               error={
                 formik.touched.disabilityPercentage &&
@@ -212,6 +271,11 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                     control={
                       <Checkbox
                         name="eligibilityCriteria"
+                        checked={
+                          eligibilityCriteriaState[
+                            eligibilityCriterion.toLowerCase()
+                          ]
+                        }
                         value={eligibilityCriterion.toLowerCase()}
                         onChange={(e) => {
                           if (e.target.checked)
@@ -249,6 +313,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                   control={
                     <Radio
                       name="medicalCondition"
+                      checked={
+                        medicalCondition.toLowerCase() ===
+                        candidateDetails.medicalCondition
+                      }
                       value={medicalCondition.toLowerCase()}
                       onChange={formik.handleChange}
                     />
@@ -265,7 +333,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.medicalOrSurgicalHistory}
+              value={
+                candidateDetails.medicalOrSurgicalHistory ||
+                formik.values.medicalOrSurgicalHistory
+              }
               onChange={formik.handleChange}
               error={
                 formik.touched.medicalOrSurgicalHistory &&
@@ -280,7 +351,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.currentTreatmentAndMedication}
+              value={
+                candidateDetails.currentTreatmentAndMedication ||
+                formik.values.currentTreatmentAndMedication
+              }
               onChange={formik.handleChange}
               error={
                 formik.touched.currentTreatmentAndMedication &&
@@ -295,7 +369,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.sportingHistory}
+              value={
+                candidateDetails.sportingHistory ||
+                formik.values.sportingHistory
+              }
               onChange={formik.handleChange}
               error={
                 formik.touched.sportingHistory &&
@@ -312,6 +389,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                   control={
                     <Checkbox
                       name="choiceOfSport"
+                      checked={choiceOfSportState[sport.toLowerCase()]}
                       value={sport.toLowerCase()}
                       onChange={(e) => {
                         if (e.target.checked)
@@ -342,7 +420,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.assistiveDevice}
+              value={
+                candidateDetails.assistiveDevice ||
+                formik.values.assistiveDevice
+              }
               onChange={formik.handleChange}
               error={
                 formik.touched.assistiveDevice &&
@@ -357,7 +438,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.height}
+              value={candidateDetails.height || formik.values.height}
               onChange={formik.handleChange}
               error={formik.touched.height && Boolean(formik.errors.height)}
             />
@@ -369,7 +450,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.weight}
+              value={candidateDetails.weight || formik.values.weight}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">kg</InputAdornment>
@@ -392,6 +473,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                   control={
                     <Radio
                       name="backScratchTest"
+                      checked={
+                        scratchTestLevel ===
+                        Number(candidateDetails.backScratchTest)
+                      }
                       value={scratchTestLevel}
                       onChange={formik.handleChange}
                     />
@@ -414,6 +499,10 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
                   control={
                     <Radio
                       name="sitAndReach"
+                      checked={
+                        scratchTestLevel ===
+                        Number(candidateDetails.sitAndReach)
+                      }
                       value={scratchTestLevel}
                       onChange={formik.handleChange}
                     />
@@ -430,7 +519,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.chestThrow}
+              value={candidateDetails.chestThrow || formik.values.chestThrow}
               onChange={formik.handleChange}
               error={
                 formik.touched.chestThrow && Boolean(formik.errors.chestThrow)
@@ -444,7 +533,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.plankTest}
+              value={candidateDetails.plankTest || formik.values.plankTest}
               onChange={formik.handleChange}
               error={
                 formik.touched.plankTest && Boolean(formik.errors.plankTest)
@@ -458,7 +547,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.broadJump}
+              value={candidateDetails.broadJump || formik.values.broadJump}
               onChange={formik.handleChange}
               error={
                 formik.touched.broadJump && Boolean(formik.errors.broadJump)
@@ -472,7 +561,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.pushUp}
+              value={candidateDetails.pushUp || formik.values.pushUp}
               onChange={formik.handleChange}
               error={formik.touched.pushUp && Boolean(formik.errors.pushUp)}
             />
@@ -484,7 +573,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.balanceLeft}
+              value={candidateDetails.balanceLeft || formik.values.balanceLeft}
               onChange={formik.handleChange}
               error={
                 formik.touched.balanceLeft && Boolean(formik.errors.balanceLeft)
@@ -498,7 +587,9 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.balanceRight}
+              value={
+                candidateDetails.balanceRight || formik.values.balanceRight
+              }
               onChange={formik.handleChange}
               error={
                 formik.touched.balanceRight &&
@@ -513,7 +604,7 @@ export default function CandidateDetailsForm(operation, candidateDetails) {
               fullWidth
               multiline
               variant="standard"
-              value={formik.values.sprint}
+              value={candidateDetails.sprint || formik.values.sprint}
               onChange={formik.handleChange}
               error={formik.touched.sprint && Boolean(formik.errors.sprint)}
             />

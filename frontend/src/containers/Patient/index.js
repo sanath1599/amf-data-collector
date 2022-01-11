@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   CssBaseline,
   AppBar,
@@ -10,11 +10,12 @@ import {
   ThemeProvider,
 } from "@mui/material/";
 import CandidateDetailsForm from "../../components/PatientComponents/CandidateDetailsForm";
+import CandidateSearch from "../../components/PatientComponents/CandidateSearch";
 
 const theme = createTheme();
 
 export default function Patient(operation) {
-  console.log("operation = ", operation.operation);
+  const [currentCandidate, setCurrentCandidate] = useState({});
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -31,6 +32,14 @@ export default function Patient(operation) {
           <Typography variant="h6" color="inherit" noWrap>
             AMF
           </Typography>
+          <Typography
+            component="h6"
+            variant="h5"
+            align="center"
+            style={{ flexGrow: 1, textAlign: "center" }}
+          >
+            {operation === "UPDATE" ? "Update Candidate" : "Add Candidate"}
+          </Typography>
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
@@ -38,11 +47,9 @@ export default function Patient(operation) {
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
-          <Typography component="h6" variant="h5" align="center">
-            {operation === "UPDATE" ? "Update Candidate" : "Add Candidate"}
-          </Typography>
+          <CandidateSearch setCurrentCandidate={setCurrentCandidate} />
           <React.Fragment>
-            <CandidateDetailsForm />
+            <CandidateDetailsForm candidateDetails={currentCandidate} />
           </React.Fragment>
         </Paper>
       </Container>
