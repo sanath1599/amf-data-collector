@@ -119,9 +119,10 @@ exports.patientDetail = [
  */
 exports.patientStore = [
   body("name", "Name must not be empty.").isLength({ min: 1 }).trim(),
-  sanitizeBody("*").escape(),
+  //sanitizeBody("*").escape(),
   (req, res) => {
     try {
+      console.log(req.body)
       const errors = validationResult(req);
       var patient = new Patient({ ...req.body, id: between(111111, 999999) });
 
@@ -147,6 +148,7 @@ exports.patientStore = [
       }
     } catch (err) {
       //throw error in json response with status 500.
+      console.log(err)
       return apiResponse.ErrorResponse(res, err);
     }
   },
