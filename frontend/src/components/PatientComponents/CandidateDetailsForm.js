@@ -51,28 +51,34 @@ export default function CandidateDetailsForm({ operation, candidateDetails }) {
 
   useEffect(() => {
     if (candidateDetails && candidateDetails.typesOfDisabilities) {
-      candidateDetails.typesOfDisabilities.forEach((type) => {
+      for (const [key, value] of Object.entries(
+        candidateDetails.typesOfDisabilities
+      )) {
         formik.setFieldValue("typesOfDisabilities", {
           ...formik.values.typesOfDisabilities,
-          [type.toLowerCase()]: true,
+          [key.toLowerCase()]: value,
         });
-      });
+      }
     }
     if (candidateDetails && candidateDetails.eligibilityCriteria) {
-      candidateDetails.eligibilityCriteria.forEach((type) => {
+      for (const [key, value] of Object.entries(
+        candidateDetails.eligibilityCriteria
+      )) {
         formik.setFieldValue("eligibilityCriteria", {
           ...formik.values.eligibilityCriteria,
-          [type.toLowerCase()]: true,
+          [key.toLowerCase()]: value,
         });
-      });
+      }
     }
     if (candidateDetails && candidateDetails.choiceOfSport) {
-      candidateDetails.choiceOfSport.forEach((type) => {
+      for (const [key, value] of Object.entries(
+        candidateDetails.choiceOfSport
+      )) {
         formik.setFieldValue("choiceOfSport", {
           ...formik.values.choiceOfSport,
-          [type.toLowerCase()]: true,
+          [key.toLowerCase()]: value,
         });
-      });
+      }
     }
   }, [candidateDetails]);
 

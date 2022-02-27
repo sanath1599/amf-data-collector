@@ -2,6 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
+import { CANDIDATE_DETAILS_SCHEMA } from "../../schema/screeningSchema";
 
 function sleep(delay = 0) {
   return new Promise((resolve) => {
@@ -55,7 +56,11 @@ export default function CandidateSearch({ setCurrentCandidate }) {
       getOptionLabel={(option) => option.name}
       options={options}
       loading={loading}
-      onChange={(event, value) => setCurrentCandidate(value)}
+      onChange={(event, value, reason) =>
+        reason !== "clear"
+          ? setCurrentCandidate(value)
+          : setCurrentCandidate(CANDIDATE_DETAILS_SCHEMA)
+      }
       renderInput={(params) => (
         <TextField
           {...params}
@@ -86,14 +91,14 @@ const candidates = [
     gender: "male",
     contactNumber: "6309616098",
     nvsBranch: "Rangareddy",
-    typesOfDisabilities: ["intellectual"],
+    typesOfDisabilities: { intellectual: true },
     disabilityPercentage: "4.20",
-    eligibilityCriteria: ["ataxia"],
+    eligibilityCriteria: { ataxia: true },
     medicalCondition: "permanent",
     medicalOrSurgicalHistory: "None",
     currentTreatmentAndMedication: "None",
     sportingHistory: "None",
-    choiceOfSport: ["taekwondo"],
+    choiceOfSport: { taekwondo: true },
     assistiveDevice: "None",
     height: "183",
     weight: "69",
