@@ -1,3 +1,8 @@
+import {
+  TYPES_OF_DISABILITIES,
+  ELIGIBILITY_CRITERIA,
+  CHOICE_OF_SPORT,
+} from "../containers/Patient/constants";
 export const CANDIDATE_DETAILS_SCHEMA = {
   name: "",
   grade: "",
@@ -5,14 +10,23 @@ export const CANDIDATE_DETAILS_SCHEMA = {
   gender: "",
   contactNumber: "",
   nvsBranch: "",
-  typesOfDisabilities: [],
+  typesOfDisabilities: TYPES_OF_DISABILITIES.reduce(
+    (object, key) => ({ ...object, [key.toLowerCase()]: false }),
+    {}
+  ),
   disabilityPercentage: "",
-  eligibilityCriteria: [],
+  eligibilityCriteria: ELIGIBILITY_CRITERIA.reduce(
+    (object, key) => ({ ...object, [key.toLowerCase()]: false }),
+    {}
+  ),
   medicalCondition: "",
   medicalOrSurgicalHistory: "",
   currentTreatmentAndMedication: "",
   sportingHistory: "",
-  choiceOfSport: [],
+  choiceOfSport: CHOICE_OF_SPORT.reduce(
+    (object, key) => ({ ...object, [key.toLowerCase()]: false }),
+    {}
+  ),
   assistiveDevice: "",
   height: "",
   weight: "",
