@@ -111,5 +111,58 @@ const candidates = [
     balanceLeft: "1",
     balanceRight: "2",
     sprint: "3",
+    id: "axai",
+    category: "Test",
+    date: "28/05/1967",
+    coach: {
+      technicalSkill: "C",
+      shortPut: "1",
+      legPosition: {
+        rt: "2",
+        lt: "3",
+      },
+      foot: {
+        rt: "4",
+        lt: "5",
+      },
+      ankle: {
+        rt: "6",
+        lt: "7",
+      },
+      knee: {
+        rt: "8",
+        lt: "9",
+      },
+      hip: {
+        rt: "1",
+        lt: "2",
+      },
+      upperbodyBendFromShoulder: "3",
+      rightHandFourFingersTouchInNeckBelowEar: "1",
+      trunkBendingPosition: "4",
+      takeOffPositionFullBody: "1",
+      rightShoulder: {
+        rotation: "5",
+        push: "9",
+      },
+      leftShoulder: {
+        rotation: "2",
+        push: "6",
+      },
+      trunk: {
+        twist: "5",
+        balance: "3",
+      },
+    },
+    physiotherapist: {
+      exercise: "1",
+    },
+    physicalEducators: {
+      trainingUpdate: "4",
+      distance: "1",
+      trainingVideo: "5",
+      strengthConditioningFeedback: "9",
+      technicalSkillsFeedback: "2",
+    },
   },
 ];
