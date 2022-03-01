@@ -34,15 +34,19 @@ if(process.env.NODE_ENV !== "test") {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
 
 //To allow cross-origin requests
 app.use(cors());
 
 //Route Prefixes
-app.use("/", indexRouter);
+//app.use("/", indexRouter);
 app.use("/api/", apiRouter);
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 // throw 404 if URL not found
 app.all("*", function(req, res) {
 	return apiResponse.notFoundResponse(res, "Page not found");

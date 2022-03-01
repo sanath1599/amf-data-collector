@@ -25,8 +25,8 @@ export default function CandidateSearch({ setCurrentCandidate }) {
 
     (async () => {
       let ipAddress = window.location.href.split(':')[1]
-      // alert(ipAddress.slice(0,ipAddress.length-1))
-      let patients = await axios.get(`http:${ipAddress.slice(0,ipAddress.length-1)}:3005/api/patient`);
+     // alert(`http:${ipAddress.slice(0,ipAddress.length-1)}:80/api/patient`)
+      let patients = await axios.get(`http:${ipAddress.slice(0,ipAddress.length-1)}:80/api/patient`);
       console.log("STOP SEARCHING", [patients?.data?.data][0]);
       // write API to fetch candidates based on name
       await sleep(1e3); // For demo purposes.

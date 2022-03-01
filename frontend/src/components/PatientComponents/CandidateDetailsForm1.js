@@ -43,9 +43,9 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           select
           id="select"
           name="grade"
-          fullWidth
-          required
           label="Grade"
+          fullWidth
+          fullWidthlabel="Grade"
           value={formik.values.grade}
           onChange={formik.handleChange}
           error={formik.touched.grade && Boolean(formik.errors.grade)}
@@ -62,7 +62,6 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           id="select"
           name="age"
           type="number"
-          required
           fullWidth
           label="Age"
           value={formik.values.age}
@@ -84,7 +83,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
               control={
                 <Radio
                   name="gender"
-                  required={true}
+                  //required={true}
                   value={gender.toLowerCase()}
                   onChange={formik.handleChange}
                   error={formik.touched.gender && Boolean(formik.errors.gender)}
@@ -98,9 +97,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
       <Grid item xs={12}>
         <MuiPhoneNumber
           name="contactNumber"
-          label="Contact Number"
-          required
-          defaultCountry="in"
+          label="Contact Number"defaultCountry="in"
           placeholder=""
           disableDropdown
           disableCountryCode
@@ -116,9 +113,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           id="select"
           name="nvsBranch"
           fullWidth
-          label="NVS branch"
-          required
-          value={formik.values.nvsBranch}
+          label="NVS branch"value={formik.values.nvsBranch}
           onChange={formik.handleChange}
           error={formik.touched.nvsBranch && Boolean(formik.errors.nvsBranch)}
         >

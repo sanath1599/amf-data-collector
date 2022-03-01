@@ -85,13 +85,7 @@ var PatientSchema = new Schema(
     physioTherapist: {
       exercise: { type: String, required: false }
     },
-    physicalEducators: {
-      trainingUpdate: { type: String, required: false },
-      distance: { type: String, required: false },
-      trainingVideo: { type: String, required: false },
-      strengthConditioningFeedback: { type: String, required: false },
-      technicalSkillsFeedback: { type: String, required: false }
-    }
+    physicalEducators: { type: Object, required: false}
   },
   { timestamps: false }
 );
