@@ -12,10 +12,11 @@ function between(min, max) {
 
 // Patient Schema
 function PatientData(data) {
-  this.id = data._id;
+  this.id = data.id;
   this.name = data.name;
   this.grade = data.grade;
   this.gender = data.gender;
+  this.age = data.age;
   this.contactNumber = data.contactNumber;
   this.nvsBranch = data.nvsBranch;
   this.typesOfDisabilities = data.typesOfDisabilities;
@@ -38,6 +39,11 @@ function PatientData(data) {
   this.balanceLeft = data.balanceLeft;
   this.balanceRight = data.balanceRight;
   this.sprint = data.sprint;
+  this.category = data.category;
+  this.date = data.date;
+  this.coach = data.coach;
+  this.physioTherapist = data.physioTherapist;
+  this.physicalEducators = data.physicalEducators;
 }
 
 /**
@@ -120,10 +126,14 @@ exports.patientDetail = [
 exports.patientStore = [
   body("name", "Name must not be empty.").isLength({ min: 1 }).trim(),
   //sanitizeBody("*").escape(),
-  (req, res) => {
+  async (req, res) => {
     try {
       const errors = validationResult(req);
-      var patient = new Patient({ ...req.body, id: between(111111, 999999) });
+      console.log("STUDENT ID IS",req.body.id)
+      let patient = await Patient.findOne({ id: req.body.id })
+      console.log("PATIENT DATA IS",patient)
+      if(!patient){
+      patient = new Patient({ ...req.body });
 
       if (!errors.isEmpty()) {
         return apiResponse.validationErrorWithData(
@@ -145,8 +155,16 @@ exports.patientStore = [
           );
         });
       }
+    }
+    else{
+      let updatedData = await Patient.updateOne({ id: req.body.id },{ $set : { ...req.body }})
+      return apiResponse.successResponseWithData(
+        res,
+        "Patient add Success.",
+        updatedData
+      );
+    }
     } catch (err) {
-      //throw error in json response with status 500.
       console.log(err)
       return apiResponse.ErrorResponse(res, err);
     }

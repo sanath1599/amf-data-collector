@@ -474,6 +474,158 @@ export default function CandidatePerformanceMentoringForm({
               }
             />
           </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="discus-throw"
+              label="Discus Throw "
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.discusThrow }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  discusThrow : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="foot-position"
+              label="Foot position"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.footPosition }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  footPosition : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="trunk-rotation"
+              label="Trunk Rotation"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.trunkRotation }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  trunkRotation : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="upperbody-position"
+              label="Upperbody Position"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.upperbodyPosition }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  upperbodyPosition : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="Finger Release"
+              label="Finger Release"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.fingerRelease }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  fingerRelease : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="javelin-throw"
+              label="Javelin Throw"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.javelinThrow }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  javelinThrow : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="run-away"
+              label="Run Away"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.runAway }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  runAway : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="landing-position"
+              label="Landing Position"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.landingPosition}
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  landingPosition : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="throwing-position"
+              label="Throwing Position"
+              fullWidth
+              variant="standard"
+              value={formik.values.coach.throwingPosition }
+              onChange={(e) =>
+                formik.setFieldValue("coach", {
+                  ...formik.values.coach,
+                  throwingPosition : e.target.value,
+                })
+              }
+            />
+          </Grid>
+          
+          <Grid item xs={12}>
+            <TextField
+              id="distance"
+              label="Distance"
+              fullWidth
+              multiline
+              variant="standard"
+              value={formik.values.physicalEducators.distance}
+              onChange={(e) =>
+                formik.setFieldValue("physicalEducators", {
+                  ...formik.values.physicalEducators,
+                  distance: e.target.value,
+                })
+              }
+            />
+          </Grid>
         </>
       )}
       {mentorType === MENTOR_PHYSIO && (
@@ -508,22 +660,6 @@ export default function CandidatePerformanceMentoringForm({
                 formik.setFieldValue("physicalEducators", {
                   ...formik.values.physicalEducators,
                   trainingUpdate: e.target.value,
-                })
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              id="distance"
-              label="Distance"
-              fullWidth
-              multiline
-              variant="standard"
-              value={formik.values.physicalEducators.distance}
-              onChange={(e) =>
-                formik.setFieldValue("physicalEducators", {
-                  ...formik.values.physicalEducators,
-                  distance: e.target.value,
                 })
               }
             />
