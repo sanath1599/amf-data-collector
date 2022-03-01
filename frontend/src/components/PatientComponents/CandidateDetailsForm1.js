@@ -86,10 +86,10 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
                 <Radio
                   name="gender"
                   required={true}
-                  checked={
-                    candidateDetails &&
-                    candidateDetails.gender === gender.toLowerCase()
-                  }
+                  // checked={
+                  //   candidateDetails &&
+                  //   candidateDetails.gender === gender.toLowerCase()
+                  // }
                   value={gender.toLowerCase()}
                   onChange={formik.handleChange}
                   error={formik.touched.gender && Boolean(formik.errors.gender)}
@@ -404,11 +404,11 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
               control={
                 <Radio
                   name="backScratchTest"
-                  checked={
-                    candidateDetails &&
-                    Number(candidateDetails.backScratchTest) ===
-                      scratchTestLevel
-                  }
+                  // checked={
+                  //   candidateDetails &&
+                  //   Number(candidateDetails.backScratchTest) ===
+                  //     scratchTestLevel
+                  // }
                   value={scratchTestLevel}
                   onChange={formik.handleChange}
                 />
@@ -431,10 +431,10 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
               control={
                 <Radio
                   name="sitAndReach"
-                  checked={
-                    candidateDetails &&
-                    Number(candidateDetails.sitAndReach) === scratchTestLevel
-                  }
+                  // checked={
+                  //   candidateDetails &&
+                  //   Number(candidateDetails.sitAndReach) === scratchTestLevel
+                  // }
                   value={scratchTestLevel}
                   onChange={formik.handleChange}
                 />

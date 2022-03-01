@@ -82,7 +82,7 @@ export const CANDIDATE_DETAILS_SCHEMA = {
       balance: "",
     },
   },
-  physiotherapist: {
+  physioTherapist: {
     exercise: "",
   },
   physicalEducators: {

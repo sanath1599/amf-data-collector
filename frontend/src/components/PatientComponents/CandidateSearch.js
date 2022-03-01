@@ -113,7 +113,7 @@ const candidates = [
     sprint: "3",
     id: "axai",
     category: "Test",
-    date: "28/05/1967",
+    date: "28-05-1967",
     coach: {
       technicalSkill: "C",
       shortPut: "1",
@@ -154,7 +154,7 @@ const candidates = [
         balance: "3",
       },
     },
-    physiotherapist: {
+    physioTherapist: {
       exercise: "1",
     },
     physicalEducators: {
