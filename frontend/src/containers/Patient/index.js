@@ -29,9 +29,7 @@ export default function Patient(operation) {
         }}
       >
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            AMF
-          </Typography>
+          <img src="logo.jpg" height="150el"/>
           <Typography
             component="h6"
             variant="h5"

@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-
-const API_URL = "http://localhost:3005/api/patient/";
+let ipAddress = window.location.href.split(':')[1]
+const API_URL = `http:${ipAddress.slice(0,ipAddress.length-1)}:3005/api/patient/`;
 
 class PatientService {
   getAllPatients() {

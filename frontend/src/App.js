@@ -23,8 +23,8 @@ function App() {
           <Route exact path="/register" element={<PublicRoute user={user} />}>
             <Route exact path="/register" element={<Register />} />
           </Route>
-          <Route exact path="/" element={<PrivateRoute />}>
-            <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<PublicRoute user={user} />}>
+            <Route exact path="/" element={<Patient />} />
           </Route>
           <Route exact path="/patient" element={<PublicRoute user={user} />}>
             <Route exact path="/patient" element={<Patient />} />
