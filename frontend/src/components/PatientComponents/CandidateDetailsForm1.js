@@ -78,7 +78,12 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
       </Grid>
       <Grid item>
         <FormLabel component="legend">Gender</FormLabel>
-        <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
+        <RadioGroup
+          row
+          value={formik.values.gender}
+          aria-label="gender"
+          name="row-radio-buttons-group"
+        >
           {GENDERS.map((gender) => (
             <FormControlLabel
               key={gender}
@@ -86,10 +91,6 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
                 <Radio
                   name="gender"
                   required={true}
-                  // checked={
-                  //   candidateDetails &&
-                  //   candidateDetails.gender === gender.toLowerCase()
-                  // }
                   value={gender.toLowerCase()}
                   onChange={formik.handleChange}
                   error={formik.touched.gender && Boolean(formik.errors.gender)}
@@ -237,6 +238,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
         <RadioGroup
           aria-label="medicalCondition"
           name="row-radio-buttons-group"
+          value={formik.values.medicalCondition}
         >
           {MEDICAL_CONDITIONS.map((medicalCondition) => (
             <FormControlLabel
@@ -244,7 +246,6 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
               control={
                 <Radio
                   name="medicalCondition"
-                  checked={candidateDetails && formik.values[medicalCondition]}
                   value={medicalCondition.toLowerCase()}
                   onChange={formik.handleChange}
                 />
@@ -397,6 +398,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           // row
           aria-label="backScratchTest"
           name="row-radio-buttons-group"
+          value={formik.values.backScratchTest}
         >
           {SCRATCH_TEST_LEVELS.map((scratchTestLevel) => (
             <FormControlLabel
@@ -404,11 +406,6 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
               control={
                 <Radio
                   name="backScratchTest"
-                  // checked={
-                  //   candidateDetails &&
-                  //   Number(candidateDetails.backScratchTest) ===
-                  //     scratchTestLevel
-                  // }
                   value={scratchTestLevel}
                   onChange={formik.handleChange}
                 />
@@ -424,6 +421,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           // row
           aria-label="sitAndReach"
           name="row-radio-buttons-group"
+          value={formik.values.sitAndReach}
         >
           {SCRATCH_TEST_LEVELS.map((scratchTestLevel) => (
             <FormControlLabel
@@ -431,10 +429,6 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
               control={
                 <Radio
                   name="sitAndReach"
-                  // checked={
-                  //   candidateDetails &&
-                  //   Number(candidateDetails.sitAndReach) === scratchTestLevel
-                  // }
                   value={scratchTestLevel}
                   onChange={formik.handleChange}
                 />

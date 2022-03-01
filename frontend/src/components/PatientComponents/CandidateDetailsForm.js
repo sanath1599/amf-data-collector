@@ -110,6 +110,37 @@ export default function CandidateDetailsForm({ operation, candidateDetails }) {
         });
       }
     }
+    if (
+      candidateDetails &&
+      candidateDetails.gender &&
+      candidateDetails.gender !== ""
+    ) {
+      formik.setFieldValue("gender", candidateDetails.gender);
+    }
+    if (
+      candidateDetails &&
+      candidateDetails.medicalCondition &&
+      candidateDetails.medicalCondition !== ""
+    ) {
+      formik.setFieldValue(
+        "medicalCondition",
+        candidateDetails.medicalCondition
+      );
+    }
+    if (
+      candidateDetails &&
+      candidateDetails.backScratchTest &&
+      candidateDetails.backScratchTest !== ""
+    ) {
+      formik.setFieldValue("backScratchTest", candidateDetails.backScratchTest);
+    }
+    if (
+      candidateDetails &&
+      candidateDetails.sitAndReach &&
+      candidateDetails.sitAndReach !== ""
+    ) {
+      formik.setFieldValue("sitAndReach", candidateDetails.sitAndReach);
+    }
   }, [candidateDetails]);
 
   return (
