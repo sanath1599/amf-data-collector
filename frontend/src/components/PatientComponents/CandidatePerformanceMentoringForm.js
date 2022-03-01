@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Grid, TextField, Typography } from "@mui/material/";
 import {
   MENTOR_COACH,
@@ -13,9 +13,15 @@ export default function CandidatePerformanceMentoringForm({
   formik,
   mentorType,
 }) {
-  const [selectedDate, setSelectedDate] = useState(
-    new Date(formik.values.date)
-  );
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  useEffect(() => {
+    if (
+      formik.values.date !== null &&
+      formik.values.date !== undefined &&
+      formik.values.date !== ""
+    )
+      setSelectedDate(new Date(formik.values.date));
+  }, [formik.values.date]);
   return (
     <Grid container spacing={3} style={{ marginTop: "5px" }}>
       <Grid item xs={12}>
