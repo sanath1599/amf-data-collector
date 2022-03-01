@@ -46,7 +46,7 @@ function PatientData(data) {
  * @returns {Object}
  */
 exports.patientList = [
-  auth,
+  //auth,
   function (req, res) {
     try {
       Patient.find({}).then((patients) => {
@@ -122,7 +122,6 @@ exports.patientStore = [
   //sanitizeBody("*").escape(),
   (req, res) => {
     try {
-      console.log(req.body)
       const errors = validationResult(req);
       var patient = new Patient({ ...req.body, id: between(111111, 999999) });
 

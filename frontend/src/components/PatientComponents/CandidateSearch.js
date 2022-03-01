@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { CANDIDATE_DETAILS_SCHEMA } from "../../schema/screeningSchema";
+import axios from "axios";
 
 function sleep(delay = 0) {
   return new Promise((resolve) => {
@@ -23,10 +24,12 @@ export default function CandidateSearch({ setCurrentCandidate }) {
     }
 
     (async () => {
-      await sleep(1e3); // For demo purposes.
-
+      console.log("START SEARCHING")
+      //await sleep(1e3); // For demo purposes.
+      let patients=  await axios.get('http://localhost:3005/api/patient');
+      console.log("STOP SEARCHING",[patients?.data?.data][0])
       if (active) {
-        setOptions([...candidates]);
+        setOptions([patients?.data?.data][0]);
       }
     })();
 
