@@ -39,4 +39,57 @@ export const CANDIDATE_DETAILS_SCHEMA = {
   balanceLeft: "",
   balanceRight: "",
   sprint: "",
+  id: "",
+  category: "",
+  date: "",
+  coach: {
+    technicalSkill: "",
+    shortPut: "",
+    legPosition: {
+      rt: "",
+      lt: "",
+    },
+    foot: {
+      rt: "",
+      lt: "",
+    },
+    ankle: {
+      rt: "",
+      lt: "",
+    },
+    knee: {
+      rt: "",
+      lt: "",
+    },
+    hip: {
+      rt: "",
+      lt: "",
+    },
+    upperbodyBendFromShoulder: "",
+    rightHandFourFingersTouchInNeckBelowEar: "",
+    trunkBendingPosition: "",
+    takeOffPositionFullBody: "",
+    rightShoulder: {
+      rotation: "",
+      push: "",
+    },
+    leftShoulder: {
+      rotation: "",
+      push: "",
+    },
+    trunk: {
+      twist: "",
+      balance: "",
+    },
+  },
+  physioTherapist: {
+    exercise: "",
+  },
+  physicalEducators: {
+    trainingUpdate: "",
+    distance: "",
+    trainingVideo: "",
+    strengthConditioningFeedback: "",
+    technicalSkillsFeedback: "",
+  },
 };

@@ -59,4 +59,8 @@ export const CHOICE_OF_SPORT = [
   "Not Interested",
 ];
 
+export const MENTOR_COACH = "Coach";
+export const MENTOR_PHYSIO = "Physiotherapist";
+export const MENTOR_PE = "Physical Educators";
+
 export const SCRATCH_TEST_LEVELS = [3, 2, 1];
