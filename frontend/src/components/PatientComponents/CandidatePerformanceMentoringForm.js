@@ -13,8 +13,9 @@ export default function CandidatePerformanceMentoringForm({
   formik,
   mentorType,
 }) {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  console.log("dt", formik.values.date);
+  const [selectedDate, setSelectedDate] = useState(
+    new Date(formik.values.date)
+  );
   return (
     <Grid container spacing={3} style={{ marginTop: "5px" }}>
       <Grid item xs={12}>
@@ -29,9 +30,7 @@ export default function CandidatePerformanceMentoringForm({
           label="Student's name"
           fullWidth
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.name) || formik.values.name
-          }
+          value={formik.values.name}
           onChange={formik.handleChange}
           error={formik.touched.name && Boolean(formik.errors.name)}
         />
@@ -42,7 +41,7 @@ export default function CandidatePerformanceMentoringForm({
           label="Student's ID"
           fullWidth
           variant="standard"
-          value={(candidateDetails && candidateDetails.id) || formik.values.id}
+          value={formik.values.id}
           onChange={formik.handleChange}
           error={formik.touched.id && Boolean(formik.errors.id)}
         />
@@ -53,10 +52,7 @@ export default function CandidatePerformanceMentoringForm({
           label="Student's Category"
           fullWidth
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.category) ||
-            formik.values.category
-          }
+          value={formik.values.category}
           onChange={formik.handleChange}
           error={formik.touched.category && Boolean(formik.errors.category)}
         />
@@ -82,12 +78,7 @@ export default function CandidatePerformanceMentoringForm({
               label="Technical skill"
               fullWidth
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.technicalSkill) ||
-                formik.values.coach.technicalSkill
-              }
+              value={formik.values.coach.technicalSkill}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -102,12 +93,7 @@ export default function CandidatePerformanceMentoringForm({
               label="Short put"
               fullWidth
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.shortPut) ||
-                formik.values.coach.shortPut
-              }
+              value={formik.values.coach.shortPut}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -123,12 +109,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.legPosition.rt) ||
-                formik.values.coach.legPosition.rt
-              }
+              value={formik.values.coach.legPosition.rt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -147,12 +128,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.legPosition.lt) ||
-                formik.values.coach.legPosition.lt
-              }
+              value={formik.values.coach.legPosition.lt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -171,12 +147,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.foot.rt) ||
-                formik.values.coach.foot.rt
-              }
+              value={formik.values.coach.foot.rt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -195,12 +166,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.foot.lt) ||
-                formik.values.coach.foot.lt
-              }
+              value={formik.values.coach.foot.lt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -219,12 +185,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.ankle.rt) ||
-                formik.values.coach.ankle.rt
-              }
+              value={formik.values.coach.ankle.rt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -243,12 +204,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.ankle.lt) ||
-                formik.values.coach.ankle.lt
-              }
+              value={formik.values.coach.ankle.lt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -267,12 +223,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.knee.rt) ||
-                formik.values.coach.knee.rt
-              }
+              value={formik.values.coach.knee.rt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -291,12 +242,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.knee.lt) ||
-                formik.values.coach.knee.lt
-              }
+              value={formik.values.coach.knee.lt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -315,12 +261,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.hip.rt) ||
-                formik.values.coach.hip.rt
-              }
+              value={formik.values.coach.hip.rt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -339,12 +280,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.hip.lt) ||
-                formik.values.coach.hip.lt
-              }
+              value={formik.values.coach.hip.lt}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -362,12 +298,7 @@ export default function CandidatePerformanceMentoringForm({
               label="Upper body bend from shoulder"
               fullWidth
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.upperbodyBendFromShoulder) ||
-                formik.values.coach.upperbodyBendFromShoulder
-              }
+              value={formik.values.coach.upperbodyBendFromShoulder}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -383,10 +314,6 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               variant="standard"
               value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach
-                    .rightHandFourFingersTouchInNeckBelowEar) ||
                 formik.values.coach.rightHandFourFingersTouchInNeckBelowEar
               }
               onChange={(e) =>
@@ -403,12 +330,7 @@ export default function CandidatePerformanceMentoringForm({
               label="Trunk bending position"
               fullWidth
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.trunkBendingPosition) ||
-                formik.values.coach.trunkBendingPosition
-              }
+              value={formik.values.coach.trunkBendingPosition}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -423,12 +345,7 @@ export default function CandidatePerformanceMentoringForm({
               label="Take off position full body"
               fullWidth
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.takeOffPositionFullBody) ||
-                formik.values.coach.takeOffPositionFullBody
-              }
+              value={formik.values.coach.takeOffPositionFullBody}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -444,12 +361,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.rightShoulder.rotation) ||
-                formik.values.coach.rightShoulder.rotation
-              }
+              value={formik.values.coach.rightShoulder.rotation}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -468,12 +380,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.rightShoulder.push) ||
-                formik.values.coach.rightShoulder.push
-              }
+              value={formik.values.coach.rightShoulder.push}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -492,12 +399,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.leftShoulder.rotation) ||
-                formik.values.coach.leftShoulder.rotation
-              }
+              value={formik.values.coach.leftShoulder.rotation}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -516,12 +418,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.leftShoulder.push) ||
-                formik.values.coach.leftShoulder.push
-              }
+              value={formik.values.coach.leftShoulder.push}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -540,12 +437,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.trunk.twist) ||
-                formik.values.coach.trunk.twist
-              }
+              value={formik.values.coach.trunk.twist}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -564,12 +456,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.coach &&
-                  candidateDetails.coach.trunk.balance) ||
-                formik.values.coach.trunk.balance
-              }
+              value={formik.values.coach.trunk.balance}
               onChange={(e) =>
                 formik.setFieldValue("coach", {
                   ...formik.values.coach,
@@ -591,12 +478,7 @@ export default function CandidatePerformanceMentoringForm({
             fullWidth
             multiline
             variant="standard"
-            value={
-              (candidateDetails &&
-                candidateDetails.physioTherapist &&
-                candidateDetails.physioTherapist.exercise) ||
-              formik.values.physioTherapist.exercise
-            }
+            value={formik.values.physioTherapist.exercise}
             onChange={(e) =>
               formik.setFieldValue("physioTherapist", {
                 ...formik.values.physioTherapist,
@@ -615,12 +497,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.physicalEducators &&
-                  candidateDetails.physicalEducators.trainingUpdate) ||
-                formik.values.physicalEducators.trainingUpdate
-              }
+              value={formik.values.physicalEducators.trainingUpdate}
               onChange={(e) =>
                 formik.setFieldValue("physicalEducators", {
                   ...formik.values.physicalEducators,
@@ -636,12 +513,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.physicalEducators &&
-                  candidateDetails.physicalEducators.distance) ||
-                formik.values.physicalEducators.distance
-              }
+              value={formik.values.physicalEducators.distance}
               onChange={(e) =>
                 formik.setFieldValue("physicalEducators", {
                   ...formik.values.physicalEducators,
@@ -657,12 +529,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.physicalEducators &&
-                  candidateDetails.physicalEducators.trainingVideo) ||
-                formik.values.physicalEducators.trainingVideo
-              }
+              value={formik.values.physicalEducators.trainingVideo}
               onChange={(e) =>
                 formik.setFieldValue("physicalEducators", {
                   ...formik.values.physicalEducators,
@@ -679,10 +546,6 @@ export default function CandidatePerformanceMentoringForm({
               multiline
               variant="standard"
               value={
-                (candidateDetails &&
-                  candidateDetails.physicalEducators &&
-                  candidateDetails.physicalEducators
-                    .strengthConditioningFeedback) ||
                 formik.values.physicalEducators.strengthConditioningFeedback
               }
               onChange={(e) =>
@@ -700,12 +563,7 @@ export default function CandidatePerformanceMentoringForm({
               fullWidth
               multiline
               variant="standard"
-              value={
-                (candidateDetails &&
-                  candidateDetails.physicalEducators &&
-                  candidateDetails.physicalEducators.technicalSkillsFeedback) ||
-                formik.values.physicalEducators.technicalSkillsFeedback
-              }
+              value={formik.values.physicalEducators.technicalSkillsFeedback}
               onChange={(e) =>
                 formik.setFieldValue("physicalEducators", {
                   ...formik.values.physicalEducators,

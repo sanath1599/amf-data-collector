@@ -33,9 +33,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           label="Student's name"
           fullWidth
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.name) || formik.values.name
-          }
+          value={formik.values.name}
           onChange={formik.handleChange}
           error={formik.touched.name && Boolean(formik.errors.name)}
         />
@@ -48,9 +46,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           required
           label="Grade"
-          value={
-            (candidateDetails && candidateDetails.grade) || formik.values.grade
-          }
+          value={formik.values.grade}
           onChange={formik.handleChange}
           error={formik.touched.grade && Boolean(formik.errors.grade)}
         >
@@ -69,9 +65,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           required
           fullWidth
           label="Age"
-          value={
-            (candidateDetails && candidateDetails.age) || formik.values.age
-          }
+          value={formik.values.age}
           onChange={formik.handleChange}
           error={formik.touched.age && Boolean(formik.errors.age)}
         />
@@ -112,10 +106,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           disableCountryCode
           autoFormat={false}
           fullWidth
-          value={
-            (candidateDetails && candidateDetails.contactNumber) ||
-            formik.values.contactNumber
-          }
+          value={formik.values.contactNumber}
           onChange={(e) => formik.setFieldValue("contactNumber", e)}
         />
       </Grid>
@@ -127,10 +118,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           label="NVS branch"
           required
-          value={
-            (candidateDetails && candidateDetails.nvsBranch) ||
-            formik.values.nvsBranch
-          }
+          value={formik.values.nvsBranch}
           onChange={formik.handleChange}
           error={formik.touched.nvsBranch && Boolean(formik.errors.nvsBranch)}
         >
@@ -185,10 +173,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           type="number"
           fullWidth
           label="Disability Percentage"
-          value={
-            (candidateDetails && candidateDetails.disabilityPercentage) ||
-            formik.values.disabilityPercentage
-          }
+          value={formik.values.disabilityPercentage}
           onChange={formik.handleChange}
           error={
             formik.touched.disabilityPercentage &&
@@ -262,10 +247,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.medicalOrSurgicalHistory) ||
-            formik.values.medicalOrSurgicalHistory
-          }
+          value={formik.values.medicalOrSurgicalHistory}
           onChange={formik.handleChange}
           error={
             formik.touched.medicalOrSurgicalHistory &&
@@ -280,11 +262,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails &&
-              candidateDetails.currentTreatmentAndMedication) ||
-            formik.values.currentTreatmentAndMedication
-          }
+          value={formik.values.currentTreatmentAndMedication}
           onChange={formik.handleChange}
           error={
             formik.touched.currentTreatmentAndMedication &&
@@ -299,10 +277,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.sportingHistory) ||
-            formik.values.sportingHistory
-          }
+          value={formik.values.sportingHistory}
           onChange={formik.handleChange}
           error={
             formik.touched.sportingHistory &&
@@ -348,10 +323,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.assistiveDevice) ||
-            formik.values.assistiveDevice
-          }
+          value={formik.values.assistiveDevice}
           onChange={formik.handleChange}
           error={
             formik.touched.assistiveDevice &&
@@ -366,10 +338,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.height) ||
-            formik.values.height
-          }
+          value={formik.values.height}
           onChange={formik.handleChange}
           error={formik.touched.height && Boolean(formik.errors.height)}
         />
@@ -381,10 +350,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.weight) ||
-            formik.values.weight
-          }
+          value={formik.values.weight}
           InputProps={{
             endAdornment: <InputAdornment position="end">kg</InputAdornment>,
           }}
@@ -445,10 +411,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.chestThrow) ||
-            formik.values.chestThrow
-          }
+          value={formik.values.chestThrow}
           onChange={formik.handleChange}
           error={formik.touched.chestThrow && Boolean(formik.errors.chestThrow)}
         />
@@ -460,10 +423,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.plankTest) ||
-            formik.values.plankTest
-          }
+          value={formik.values.plankTest}
           onChange={formik.handleChange}
           error={formik.touched.plankTest && Boolean(formik.errors.plankTest)}
         />
@@ -475,10 +435,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.broadJump) ||
-            formik.values.broadJump
-          }
+          value={formik.values.broadJump}
           onChange={formik.handleChange}
           error={formik.touched.broadJump && Boolean(formik.errors.broadJump)}
         />
@@ -490,10 +447,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.pushUp) ||
-            formik.values.pushUp
-          }
+          value={formik.values.pushUp}
           onChange={formik.handleChange}
           error={formik.touched.pushUp && Boolean(formik.errors.pushUp)}
         />
@@ -505,10 +459,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.balanceLeft) ||
-            formik.values.balanceLeft
-          }
+          value={formik.values.balanceLeft}
           onChange={formik.handleChange}
           error={
             formik.touched.balanceLeft && Boolean(formik.errors.balanceLeft)
@@ -522,10 +473,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.balanceRight) ||
-            formik.values.balanceRight
-          }
+          value={formik.values.balanceRight}
           onChange={formik.handleChange}
           error={
             formik.touched.balanceRight && Boolean(formik.errors.balanceRight)
@@ -539,10 +487,7 @@ export default function CandidateDetailsForm1({ candidateDetails, formik }) {
           fullWidth
           multiline
           variant="standard"
-          value={
-            (candidateDetails && candidateDetails.sprint) ||
-            formik.values.sprint
-          }
+          value={formik.values.sprint}
           onChange={formik.handleChange}
           error={formik.touched.sprint && Boolean(formik.errors.sprint)}
         />

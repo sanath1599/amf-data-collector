@@ -113,7 +113,7 @@ const candidates = [
     sprint: "3",
     id: "axai",
     category: "Test",
-    date: "28-05-1967",
+    date: "Thu Sep 02 2021 14:04:42 GMT+0530 (India Standard Time)",
     coach: {
       technicalSkill: "C",
       shortPut: "1",

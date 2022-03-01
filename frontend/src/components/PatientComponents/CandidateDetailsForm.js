@@ -80,66 +80,9 @@ export default function CandidateDetailsForm({ operation, candidateDetails }) {
   }
 
   useEffect(() => {
-    if (candidateDetails && candidateDetails.typesOfDisabilities) {
-      for (const [key, value] of Object.entries(
-        candidateDetails.typesOfDisabilities
-      )) {
-        formik.setFieldValue("typesOfDisabilities", {
-          ...formik.values.typesOfDisabilities,
-          [key.toLowerCase()]: value,
-        });
-      }
-    }
-    if (candidateDetails && candidateDetails.eligibilityCriteria) {
-      for (const [key, value] of Object.entries(
-        candidateDetails.eligibilityCriteria
-      )) {
-        formik.setFieldValue("eligibilityCriteria", {
-          ...formik.values.eligibilityCriteria,
-          [key.toLowerCase()]: value,
-        });
-      }
-    }
-    if (candidateDetails && candidateDetails.choiceOfSport) {
-      for (const [key, value] of Object.entries(
-        candidateDetails.choiceOfSport
-      )) {
-        formik.setFieldValue("choiceOfSport", {
-          ...formik.values.choiceOfSport,
-          [key.toLowerCase()]: value,
-        });
-      }
-    }
-    if (
-      candidateDetails &&
-      candidateDetails.gender &&
-      candidateDetails.gender !== ""
-    ) {
-      formik.setFieldValue("gender", candidateDetails.gender);
-    }
-    if (
-      candidateDetails &&
-      candidateDetails.medicalCondition &&
-      candidateDetails.medicalCondition !== ""
-    ) {
-      formik.setFieldValue(
-        "medicalCondition",
-        candidateDetails.medicalCondition
-      );
-    }
-    if (
-      candidateDetails &&
-      candidateDetails.backScratchTest &&
-      candidateDetails.backScratchTest !== ""
-    ) {
-      formik.setFieldValue("backScratchTest", candidateDetails.backScratchTest);
-    }
-    if (
-      candidateDetails &&
-      candidateDetails.sitAndReach &&
-      candidateDetails.sitAndReach !== ""
-    ) {
-      formik.setFieldValue("sitAndReach", candidateDetails.sitAndReach);
+    for (const [key, value] of Object.entries(candidateDetails)) {
+      if (key !== undefined || key !== "" || key !== null)
+        formik.setFieldValue(key, value);
     }
   }, [candidateDetails]);
 
